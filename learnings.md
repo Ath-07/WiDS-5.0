@@ -1,51 +1,31 @@
-# Week 1 Learnings — Plant Disease Classification (PlantVillage)
+# Plant Disease Classification — Week-wise Learnings (PlantVillage)
 
-## Dataset Understanding
-- The PlantVillage dataset is structured as folder-based image data, where each folder represents a **Plant–Disease combination**.
-- Multiple representations of the same images exist (color, grayscale, segmented).  
-  For EDA, only the **color dataset** was used to avoid duplication and biased statistics.
+## Week 1: Dataset Understanding & Exploratory Analysis
 
----
+- The PlantVillage dataset is organized as **folder-based image data**, where each folder represents a **Plant–Disease combination**.
+- It contains **38 disease classes across 14 plants**, with significant **class imbalance** both globally and within individual plants.
+- Certain plants, especially **Tomato**, dominate the dataset with multiple disease categories and large sample sizes, while some classes have very limited data.
+- For EDA, only the **color image dataset** was used to avoid duplication from grayscale and segmented versions.
 
-## Key Observations
-
-### 1. Class and Plant Imbalance
-- The dataset contains **38 disease classes across 14 plants**.
-- Certain plants, especially **Tomato**, dominate the dataset with multiple disease states and a high number of images.
-- Some disease classes have significantly fewer samples.
-- Imbalance exists both **globally** and **within individual plants**.
-- Class imbalance must be handled carefully during training using augmentation, sampling strategies, or class-weighted losses.
+**Key Observations**
+- Image quality is generally high, but variations in **lighting, exposure, and background noise** are present.
+- Disease classes within the same plant often exhibit **subtle visual differences** in texture, spot patterns, and color intensity.
+- The task represents a **fine-grained image classification problem**, where distinguishing diseases can be challenging even for human observers.
+- Effective modeling will require careful handling of imbalance and strong feature extraction.
 
 ---
 
-### 2. Plant-wise Disease Distribution
-- Plant-level analysis shows that some plants are dominated by one or two disease states.
-- Other plants have a more balanced distribution of disease classes.
-- This indicates that imbalance is not uniform across plants.
+## Week 2: Shallow Baseline Modeling (Classical ML)
+
+- A **Dummy Classifier (most frequent)** achieved ~**10% accuracy**, establishing a valid lower-bound baseline and confirming correct data preprocessing.
+- A **Random Forest model trained on flattened 64×64 RGB images** achieved ~**64% accuracy**, defining the **upper limit of classical machine learning performance** on raw pixels.
+- Classical models captured **global color and texture patterns** but struggled with **spatial and fine-grained disease characteristics**.
+- Minority and visually similar disease classes showed low recall, exposing the limitations of flattened representations.
 
 ---
 
-### 3. Image Quality Analysis
-- Most images are clear and well-focused.
-- Variations exist in lighting conditions, including overexposed and underexposed images.
-- Backgrounds are mostly clean but occasionally include noise such as soil or other leaves.
+## Overall Takeaway
 
----
-
-### 4. Visual Similarity Between Disease Classes
-- Disease classes within the same plant often show **subtle visual differences**.
-- Differences are mainly in texture, spot patterns, and color intensity.
-- In many cases, diseases are difficult to distinguish even by human inspection.
-- This is a **fine-grained image classification problem**, requiring strong feature extraction and careful evaluation.
-
----
-
-## Overall Takeaways
-- Dataset understanding reveals that performance will depend heavily on data handling rather than model complexity alone.
-- Addressing imbalance and visual similarity will be critical for downstream success.
-- Week 1 EDA provides a strong foundation for informed modeling decisions in future weeks.
-
----
-
-## Reflection
-This exploratory analysis emphasized the importance of deeply understanding dataset characteristics before model training. The challenges observed in class balance, image quality, and disease similarity closely reflect real-world agricultural diagnosis problems.
+- Week 1 EDA revealed structural challenges in the dataset that directly influenced Week 2 model performance.
+- Shallow baselines provide a strong yet limited benchmark, scientifically motivating the transition to **CNN-based architectures** in subsequent weeks.
+- Together, these weeks establish a rigorous foundation for evaluating the true impact of deep learning models on plant disease classification.
