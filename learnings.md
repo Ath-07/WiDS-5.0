@@ -24,8 +24,19 @@
 
 ---
 
-## Overall Takeaway
+## Week 3: Deep Learning with CNNs & Transfer Learning
 
-- Week 1 EDA revealed structural challenges in the dataset that directly influenced Week 2 model performance.
-- Shallow baselines provide a strong yet limited benchmark, scientifically motivating the transition to **CNN-based architectures** in subsequent weeks.
-- Together, these weeks establish a rigorous foundation for evaluating the true impact of deep learning models on plant disease classification.
+- A **custom CNN trained from scratch** achieved high training accuracy but showed a noticeable generalization gap, highlighting the risk of overfitting on imbalanced and fine-grained datasets.
+- The CNN performed well on visually distinct and high-support classes but struggled with minority classes and subtle disease variations.
+- **Transfer learning using a pretrained MobileNetV2 backbone** significantly improved performance, achieving strong precision, recall, and F1-scores across almost all classes.
+- Fine-tuning higher-level convolutional layers further improved generalization, demonstrating the value of pretrained representations for plant disease recognition.
+- Confusion matrix analysis confirmed a substantial reduction in inter-class confusion compared to both shallow models and the custom CNN.
+
+---
+
+## Overall Takeaway (Weeks 1–3)
+
+- Week 1 established that PlantVillage is a **large, imbalanced, and fine-grained image classification dataset**, requiring models capable of capturing subtle visual patterns.
+- Week 2 showed that **classical machine learning methods**, while useful as scientific baselines, are fundamentally limited by their reliance on flattened pixel representations.
+- Week 3 demonstrated that **convolutional neural networks** effectively address spatial complexity, and that **transfer learning is critical** for achieving robust and scalable performance under class imbalance.
+- Together, these weeks illustrate a clear progression from data understanding to baseline modeling and finally to high-performing deep learning solutions, forming a strong foundation for further optimization, interpretability, and real-world deployment.
