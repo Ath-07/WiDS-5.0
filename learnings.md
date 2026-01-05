@@ -32,6 +32,8 @@
 - Fine-tuning higher-level convolutional layers further improved generalization, demonstrating the value of pretrained representations for plant disease recognition.
 - Confusion matrix analysis confirmed a substantial reduction in inter-class confusion compared to both shallow models and the custom CNN.
 
+**Note on Reported Accuracy**  
+While the transfer learning model achieves very high validation accuracy on the PlantVillage dataset, these results reflect the controlled acquisition conditions of the dataset. Real-world agricultural images are significantly more complex, and performance is expected to degrade under domain shift. Therefore, the reported metrics should be interpreted as an upper bound rather than a realistic deployment benchmark.
 ---
 
 ## Overall Takeaway (Weeks 1–3)
