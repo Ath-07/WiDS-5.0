@@ -1,7 +1,7 @@
 # Plant Disease Classification — WiDS 5.0  
 ## PlantVillage Dataset
 
-This repository contains the **Week 1 and Week 2 deliverables** for the Plant Disease Classification project under **WiDS 5.0**, following a progressive approach from data understanding to baseline modeling.
+This repository contains the **All deliverables** for the Plant Disease Classification project under **WiDS 5.0**, following a progressive approach from data understanding to baseline modeling.
 
 ---
 
