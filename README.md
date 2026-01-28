@@ -85,18 +85,60 @@ Two models were trained and compared:
 
 ---
 
-## Overall Takeaway
- A progressive evaluation of the PlantVillage dataset highlights the importance of aligning modeling complexity with dataset characteristics.  
-Week 1 EDA revealed significant class imbalance and high visual similarity between disease categories within the same plant, establishing this as a fine-grained classification problem.  
-Week 2 classical machine learning baselines demonstrated that shallow models relying on raw pixel features are limited in their ability to capture subtle disease patterns, achieving moderate performance despite careful preprocessing.  
-Week 3 deep learning experiments confirmed that convolutional neural networks substantially improve performance by learning spatial representations, while transfer learning with a pretrained MobileNetV2 backbone delivers near-optimal generalization even under class imbalance.  
+## Week 4 — Federated Learning with CNNs
 
-Together, these results show that effective plant disease classification requires both domain-aware data understanding and modern CNN architectures, with transfer learning emerging as the most reliable and scalable approach for real-world deployment.
+### Objective  
+Simulate decentralized training using federated learning and analyze model behavior under non-IID data distributions.
+
+### Methodology  
+- Implemented federated learning using the Flower framework  
+- Simulated three clients with disjoint, non-IID data splits  
+- Trained a shared CNN using the FedAvg algorithm across multiple rounds  
+
+### Results  
+- Initial federated round achieved high accuracy (~91%)  
+- Subsequent rounds showed accuracy degradation due to client drift  
+- Demonstrated known limitations of FedAvg under heterogeneous data  
+
+---
+
+## Week 5 — Saving, Visualizing, and Deploying the Federated Model (MLOps)
+
+### Objective  
+Transition from experimentation to system-level thinking by persisting models, logging metrics, and visualizing training behavior.
+
+### Methodology  
+- Saved the final global federated model to disk  
+- Logged per-round global accuracy to a CSV file  
+- Built a Streamlit app to visualize federated training performance  
+
+### Results  
+- Enabled post-training inspection without retraining  
+- Visualizations revealed federated convergence issues clearly  
+- Demonstrated reproducibility and separation of training from analysis
+
+---
+
+## Overall Takeaway
+
+This project follows a progressive and structured approach to plant disease classification, moving from data understanding to model development, distributed training, and system-level deployment considerations.
+
+Weeks 1–3 established a strong foundation for modeling by emphasizing the importance of **data characteristics** and **model choice**. Exploratory data analysis in Week 1 revealed significant class imbalance and high visual similarity between disease categories within the same plant, framing the problem as a fine-grained classification task. Week 2 demonstrated that classical machine learning models operating on raw pixel features are inherently limited in capturing such subtle spatial patterns, achieving only moderate performance despite careful preprocessing. Week 3 showed that convolutional neural networks substantially improve performance by learning hierarchical spatial representations, and that transfer learning with a pretrained MobileNetV2 backbone provides robust generalization even under severe class imbalance.
+
+Building on this foundation, Week 4 extended the problem to a **federated learning setting**, highlighting challenges that arise when training models across decentralized, non-IID data sources. While the federated model achieved strong initial performance when initialized from centralized weights, training became unstable in later rounds due to client drift and heterogeneous data distributions. These results underscore that federated learning is not a drop-in replacement for centralized training, but a paradigm that requires careful optimization, architectural constraints, and algorithmic choices.
+
+Finally, Week 5 shifted the focus from experimentation to **machine learning system design**. By saving trained models, persisting training metrics, and visualizing federated behavior using a lightweight Streamlit application, the project adopted an MLOps-oriented mindset. This separation of training, analysis, and deployment reflects real-world workflows, where reproducibility, observability, and usability are as critical as raw model performance.
+
+Overall, the project demonstrates that effective plant disease classification requires not only accurate models, but also a deep understanding of data properties, appropriate learning paradigms for the deployment context, and sound engineering practices to turn experiments into reliable systems.
 
 ---
 
 ## Repository Structure
 - `01_EDA.ipynb` — Exploratory Data Analysis (Week 1)
 - `02_Shallow_Baseline.ipynb` — Classical ML baselines (Week 2)
-- `03_deeplearning.ipynb` - CNNs and Transfer Learning
+- `03_deeplearning.ipynb` - CNNs and Transfer Learning (Week 3)
+- `04_fedretead_learning.ipynb` - Federated Models (Week 4)
+- `app.py` - Strealit script for visualizing (Week 5)
+- `federated_metrics.csv` - Result metrices
+- `federated_global_model.pth` - final federated model weights
 - `learnings.md` — Weekly insights and reflections
