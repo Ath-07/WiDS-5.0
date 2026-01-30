@@ -71,7 +71,7 @@ Week 5 emphasized that even when training outcomes are suboptimal, properly save
 
 ---
 
-## Overall Takeaway (Weeks 1–3)
+## Overall Takeaway
 
 - Week 1 established that PlantVillage is a **large, imbalanced, and fine-grained image classification dataset**, requiring models capable of capturing subtle visual patterns.
 - Week 2 showed that **classical machine learning methods**, while useful as scientific baselines, are fundamentally limited by their reliance on flattened pixel representations.
