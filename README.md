@@ -134,11 +134,23 @@ Example response:
 
 ### Pulling The Prebuilt Image
 
-If a prebuilt image has been pushed to Docker Hub, others can run:
+The prebuilt Docker image is available on Docker Hub as `aths44/wids-api:latest`.
+
+Others can run:
 
 ```powershell
-docker pull <dockerhub-username>/wids-api:latest
-docker run --rm -p 8000:8000 <dockerhub-username>/wids-api:latest
+docker pull aths44/wids-api:latest
+docker run --rm -p 8000:8000 aths44/wids-api:latest
+```
+
+After starting the container, open:
+- `http://localhost:8000`
+- `http://localhost:8000/docs`
+
+To test prediction from PowerShell:
+
+```powershell
+curl.exe -X POST "http://localhost:8000/predict" -F "file=@C:\path\to\leaf.jpg"
 ```
 
 ---
